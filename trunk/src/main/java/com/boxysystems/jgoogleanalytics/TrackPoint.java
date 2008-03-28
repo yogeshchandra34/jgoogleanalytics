@@ -28,6 +28,11 @@ public class TrackPoint {
     return name;
   }
 
+
+  public void setParentTrackPoint(TrackPoint parentTrackPoint) {
+    this.parentTrackPoint = parentTrackPoint;
+  }
+
   public TrackPoint getParentFocusPoint() {
     return parentTrackPoint;
   }
