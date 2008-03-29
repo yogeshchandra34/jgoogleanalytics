@@ -3,9 +3,11 @@
 
   <dirname property="module.basedir" file="${ant.file}"/>
 
+  <property name="version" value="0.1"/>
+
   <property name="production.output.dir" value="${module.basedir}/target/classes"/>
   <property name="test.output.dir" value="${module.basedir}/target/test-classes"/>
-  <property name="output.file" value="${module.basedir}/dist/JGoogleAnalytics.jar"/>
+  <property name="output.file" value="${module.basedir}/dist/JGoogleAnalytics_${version}.jar"/>
 
 
   <path id="module.sourcepath">
@@ -53,7 +55,7 @@
   </patternset>
 
 
-  <target name="compile" description="compile production classes">
+  <target name="compile" description="compile production classes" depends="clean">
     <mkdir dir="${production.output.dir}"/>
     <javac destdir="${production.output.dir}" source="1.4" target="1.4" debug="on" nowarn="off" fork="true">
       <src refid="module.sourcepath"/>
@@ -96,7 +98,8 @@
 
   <target name="clean" depends="delete.output.dirs" description="cleanup all"/>
 
-  <target name="buildJar" depends="clean, compile">
+  <target name="buildJar" depends="compile">
+    <mkdir dir="${module.basedir}/dist"/>
     <echo>Creating ${output.file} ...</echo>
     <jar basedir="${production.output.dir}" file="${output.file}">
       <include name="**/**"/>
@@ -104,22 +107,8 @@
         <attribute name="Built-By" value="${user.name}"/>
         <attribute name="Implementation-Vendor" value="BoxySystems Inc."/>
         <attribute name="Implementation-URL" value="http://www.BoxySystems.com"/>
+        <attribute name="Implementation-Version" value="${version}"/>
       </manifest>
     </jar>
   </target>
-
-  <target name="buildSourceZip">
-    <tstamp/>
-    <echo>Creating LibraryFinderSource zip file...</echo>
-    <zip basedir="." file="LibraryFinderSource-${DSTAMP}${TSTAMP}.zip">
-      <include name="intentionDescription/**"/>
-      <include name="META-INF/**"/>
-      <include name="src/**"/>
-      <include name="test-src/**"/>
-      <include name="build.xml"/>
-      <include name="license.txt"/>
-    </zip>
-  </target>
-
-  <target name="all" depends="clean, compile" description="build all"/>
 </project>
