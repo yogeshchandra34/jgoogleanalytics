@@ -2,9 +2,8 @@ package com.boxysystems.jgoogleanalytics;
 
 import junit.framework.TestCase;
 
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.io.IOException;
+import java.net.HttpURLConnection;
 
 /**
  * Created by IntelliJ IDEA.
@@ -14,16 +13,16 @@ import java.io.IOException;
  */
 public class HTTPGetMethodRequest_UT extends TestCase {
 
-  public void testRequest_Success() throws Exception{
+  public void testRequest_Success() throws Exception {
     MockHTTPGetMethod httpGetMethod = new MockHTTPGetMethod();
-    httpGetMethod.setVerboseMode(true);
+    httpGetMethod.setLoggingAdapter(new SystemOutLogger());
     httpGetMethod.request("http://www.BoxySystems.com");
     assertEquals(HttpURLConnection.HTTP_OK, httpGetMethod.responseCode);
   }
 
-  public void testRequest_Failure() throws Exception{
+  public void testRequest_Failure() throws Exception {
     MockHTTPGetMethod httpGetMethod = new MockHTTPGetMethod();
-    httpGetMethod.setVerboseMode(true);
+    httpGetMethod.setLoggingAdapter(new SystemOutLogger());
     httpGetMethod.request("http://www.BoxySystems1.com");
     assertTrue(httpGetMethod.responseCode != HttpURLConnection.HTTP_OK);
   }

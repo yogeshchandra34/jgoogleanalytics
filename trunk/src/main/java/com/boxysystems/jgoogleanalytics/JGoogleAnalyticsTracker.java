@@ -11,8 +11,8 @@ package com.boxysystems.jgoogleanalytics;
 public class JGoogleAnalyticsTracker {
 
   private URLBuildingStrategy urlBuildingStrategy = null;
-  private boolean verboseMode = false;
   private HTTPGetMethod httpRequest = new HTTPGetMethod();
+  private LoggingAdapter loggingAdapter = null;
 
   /**
    * Simple constructor passing the application name & google analytics tracking code
@@ -46,17 +46,14 @@ public class JGoogleAnalyticsTracker {
     this.urlBuildingStrategy = urlBuildingStrategy;
   }
 
-
   /**
-   * Run the tracker in verbose mode. It would log success & failure messages in the system's output console.
-   * By default, it would run in non-verbose mode.
+   * Setter injection for LoggingAdpater. You can hook up log4j, System.out or any other loggers you want.
    *
-   * @param verboseMode true or false
+   * @param loggingAdapter implemented instance of LoggingAdapter
    */
 
-  public void setVerboseMode(boolean verboseMode) {
-    this.verboseMode = verboseMode;
-    httpRequest.setVerboseMode(verboseMode);
+  public void setLoggingAdapter(LoggingAdapter loggingAdapter) {
+    this.loggingAdapter = loggingAdapter;
   }
 
   /**
