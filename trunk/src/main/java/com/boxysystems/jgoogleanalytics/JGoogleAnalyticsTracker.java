@@ -64,7 +64,7 @@ public class JGoogleAnalyticsTracker {
    * <red><b>Please be cognizant while using this method. Since, it would have a peformance hit on the actual application.
    * Use it unless it's really needed</b></red>
    *
-   * @param focusPoint Tracking point of the application like application load, user action etc.
+   * @param focusPoint Focus point of the application like application load, application module load, user actions, error events etc.
    */
 
 
@@ -75,7 +75,7 @@ public class JGoogleAnalyticsTracker {
   /**
    * Track the focusPoint in the application asynchronously. <br/>
    *
-   * @param focusPoint Tracking point of the application like application load, user action etc.
+   * @param focusPoint Focus point of the application like application load, application module load, user actions, error events etc.
    */
 
   public void trackAsynchronously(FocusPoint focusPoint) {
