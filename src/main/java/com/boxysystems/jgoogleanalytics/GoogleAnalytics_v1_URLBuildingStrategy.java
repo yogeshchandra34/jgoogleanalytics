@@ -12,7 +12,7 @@ import java.util.*;
  */
 
 public class GoogleAnalytics_v1_URLBuildingStrategy implements URLBuildingStrategy {
-  private TrackPoint appTrackPoint;
+  private FocusPoint appFocusPoint;
   private String googleAnalyticsTrackingCode;
 
   private static final String TRACKING_URL_Prefix = "http://www.google-analytics.com/__utm.gif";
@@ -31,17 +31,17 @@ public class GoogleAnalytics_v1_URLBuildingStrategy implements URLBuildingStrate
 
   public GoogleAnalytics_v1_URLBuildingStrategy(String appName, String googleAnalyticsTrackingCode) {
     this.googleAnalyticsTrackingCode = googleAnalyticsTrackingCode;
-    this.appTrackPoint = new TrackPoint(appName);
+    this.appFocusPoint = new FocusPoint(appName);
   }
 
   public GoogleAnalytics_v1_URLBuildingStrategy(String appName, String appVersion, String googleAnalyticsTrackingCode) {
     this.googleAnalyticsTrackingCode = googleAnalyticsTrackingCode;
-    this.appTrackPoint = new TrackPoint(appVersion, new TrackPoint(appName));
+    this.appFocusPoint = new FocusPoint(appVersion, new FocusPoint(appName));
   }
 
 
-  public String buildURL(TrackPoint trackPoint) {
-    trackPoint.setParentTrackPoint(appTrackPoint);
+  public String buildURL(FocusPoint focusPoint) {
+    focusPoint.setParentTrackPoint(appFocusPoint);
     StringBuffer url = new StringBuffer(TRACKING_URL_Prefix);
     url.append("?utmwv=1"); //Urchin/Analytics version
     url.append("&utmn=" + random.nextInt());
@@ -52,10 +52,10 @@ public class GoogleAnalytics_v1_URLBuildingStrategy implements URLBuildingStrate
     url.append("&utmje=1"); //java enabled
     url.append("&utmfl=9.0%20%20r28"); //flash
     url.append("&utmcr=1"); //carriage return
-    url.append("&utmdt=" + trackPoint.getContentTitle()); //The optimum keyword density //document title
+    url.append("&utmdt=" + focusPoint.getContentTitle()); //The optimum keyword density //document title
     url.append("&utmhn=" + hostName);//document hostname
     url.append("&utmr=http://BoxySystems.com"); //referer URL
-    url.append("&utmp=" + trackPoint.getContentURI());//document page URL
+    url.append("&utmp=" + focusPoint.getContentURI());//document page URL
     url.append("&utmac=" + googleAnalyticsTrackingCode);//Google Analytics account
     url.append("&utmcc=__utma%3D247248150.1814692369.1202829249.1206454660.1206537858.33%3B%2B__utmz%3D247248150.1206395957.31.20.utmcsr%3Dhttp://BoxySystems.com%7Cutmccn%3D(referral)%7Cutmcmd%3Dreferral%7Cutmcct%3D%252Fig%252Fifr%3B");
     return url.toString();

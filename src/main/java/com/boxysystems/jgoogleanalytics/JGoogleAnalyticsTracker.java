@@ -60,39 +60,39 @@ public class JGoogleAnalyticsTracker {
   }
 
   /**
-   * Track the trackPoint in the application synchronously. <br/>
+   * Track the focusPoint in the application synchronously. <br/>
    * <red><b>Please be cognizant while using this method. Since, it would have a peformance hit on the actual application.
    * Use it unless it's really needed</b></red>
    *
-   * @param trackPoint Tracking point of the application like application load, user action etc.
+   * @param focusPoint Tracking point of the application like application load, user action etc.
    */
 
 
-  public void trackSynchronously(TrackPoint trackPoint) {
-    httpRequest.request(urlBuildingStrategy.buildURL(trackPoint));
+  public void trackSynchronously(FocusPoint focusPoint) {
+    httpRequest.request(urlBuildingStrategy.buildURL(focusPoint));
   }
 
   /**
-   * Track the trackPoint in the application asynchronously. <br/>
+   * Track the focusPoint in the application asynchronously. <br/>
    *
-   * @param trackPoint Tracking point of the application like application load, user action etc.
+   * @param focusPoint Tracking point of the application like application load, user action etc.
    */
 
-  public void trackAsynchronously(TrackPoint trackPoint) {
-    new TrackingThread(trackPoint).start();
+  public void trackAsynchronously(FocusPoint focusPoint) {
+    new TrackingThread(focusPoint).start();
   }
 
   private class TrackingThread extends Thread {
-    private TrackPoint trackPoint;
+    private FocusPoint focusPoint;
 
 
-    public TrackingThread(TrackPoint trackPoint) {
-      this.trackPoint = trackPoint;
+    public TrackingThread(FocusPoint focusPoint) {
+      this.focusPoint = focusPoint;
       this.setPriority(Thread.MIN_PRIORITY);
     }
 
     public void run() {
-      httpRequest.request(urlBuildingStrategy.buildURL(trackPoint));
+      httpRequest.request(urlBuildingStrategy.buildURL(focusPoint));
     }
   }
 }

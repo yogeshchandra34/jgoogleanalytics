@@ -24,8 +24,8 @@ public class HTTPGetMethodRequest_UT extends TestCase {
   public void testRequest_Failure() throws Exception{
     MockHTTPGetMethod httpGetMethod = new MockHTTPGetMethod();
     httpGetMethod.setVerboseMode(true);
-    httpGetMethod.request("http://www.1213812938299229929299292.com");
-    assertEquals(0, httpGetMethod.responseCode);
+    httpGetMethod.request("http://www.BoxySystems1.com");
+    assertTrue(httpGetMethod.responseCode != HttpURLConnection.HTTP_OK);
   }
 
   private class MockHTTPGetMethod extends HTTPGetMethod {

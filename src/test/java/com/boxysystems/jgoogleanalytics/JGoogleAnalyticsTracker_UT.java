@@ -2,8 +2,6 @@ package com.boxysystems.jgoogleanalytics;
 
 import junit.framework.TestCase;
 
-import java.util.*;
-
 /**
  * Created by IntelliJ IDEA.
  * User: SHAMEED
@@ -12,9 +10,9 @@ import java.util.*;
  */
 public class JGoogleAnalyticsTracker_UT extends TestCase {
 
-  private TrackPoint parentTrackPoint = new TrackPoint("JGoogleAnalyticsTest");
-  private TrackPoint syncChildFocuPoint = new TrackPoint("TrackingSynchronously", parentTrackPoint);
-  private TrackPoint asyncChildFocuPoint = new TrackPoint("TrackingAsynchronously", parentTrackPoint);
+  private FocusPoint parentFocusPoint = new FocusPoint("JGoogleAnalyticsTest");
+  private FocusPoint syncChildFocuPoint = new FocusPoint("TrackingSynchronously", parentFocusPoint);
+  private FocusPoint asyncChildFocuPoint = new FocusPoint("TrackingAsynchronously", parentFocusPoint);
 
 
   public void testTrackSynchronously_LibraryFinder() throws Exception {
