@@ -11,69 +11,69 @@ import junit.framework.TestCase;
 public class FocusPoint_UT extends TestCase {
 
   public void testGetContentURI_Simple() throws Exception{
-    TrackPoint trackPoint = new TrackPoint("BoxySystems");
-    String contentURI = trackPoint.getContentURI();
+    FocusPoint focusPoint = new FocusPoint("BoxySystems");
+    String contentURI = focusPoint.getContentURI();
     assertNotNull(contentURI);
     assertEquals("/BoxySystems",contentURI);
   }
 
   public void testGetContentURI_OneLevel() throws Exception{
-    TrackPoint parentTrackPoint = new TrackPoint("BoxySystems");
-    TrackPoint childTrackPoint = new TrackPoint("LibraryFinder", parentTrackPoint);
-    String contentURI = childTrackPoint.getContentURI();
+    FocusPoint parentFocusPoint = new FocusPoint("BoxySystems");
+    FocusPoint childFocusPoint = new FocusPoint("LibraryFinder", parentFocusPoint);
+    String contentURI = childFocusPoint.getContentURI();
     assertNotNull(contentURI);
     assertEquals("/BoxySystems/LibraryFinder",contentURI);
   }
 
   public void testGetContentURI_TwoLevel() throws Exception{
-    TrackPoint parentTrackPoint = new TrackPoint("BoxySystems");
-    TrackPoint child1TrackPoint = new TrackPoint("LibraryFinder", parentTrackPoint);
-    TrackPoint child2TrackPoint = new TrackPoint("FindLibraryDialog", child1TrackPoint);
-    String contentURI = child2TrackPoint.getContentURI();
+    FocusPoint parentFocusPoint = new FocusPoint("BoxySystems");
+    FocusPoint child1FocusPoint = new FocusPoint("LibraryFinder", parentFocusPoint);
+    FocusPoint child2FocusPoint = new FocusPoint("FindLibraryDialog", child1FocusPoint);
+    String contentURI = child2FocusPoint.getContentURI();
     assertNotNull(contentURI);
     assertEquals("/BoxySystems/LibraryFinder/FindLibraryDialog",contentURI);
   }
 
   public void testGetContentURI_ThreeLevel() throws Exception{
-    TrackPoint parentTrackPoint = new TrackPoint("BoxySystems");
-    TrackPoint child1TrackPoint = new TrackPoint("LibraryFinder", parentTrackPoint);
-    TrackPoint child2TrackPoint = new TrackPoint("FindLibraryDialog", child1TrackPoint);
-    TrackPoint child3TrackPoint = new TrackPoint("RegexPattern", child2TrackPoint);
-    String contentURI = child3TrackPoint.getContentURI();
+    FocusPoint parentFocusPoint = new FocusPoint("BoxySystems");
+    FocusPoint child1FocusPoint = new FocusPoint("LibraryFinder", parentFocusPoint);
+    FocusPoint child2FocusPoint = new FocusPoint("FindLibraryDialog", child1FocusPoint);
+    FocusPoint child3FocusPoint = new FocusPoint("RegexPattern", child2FocusPoint);
+    String contentURI = child3FocusPoint.getContentURI();
     assertNotNull(contentURI);
     assertEquals("/BoxySystems/LibraryFinder/FindLibraryDialog/RegexPattern",contentURI);
   }
 
   public void testGetContentTitle_Simple() throws Exception{
-    TrackPoint trackPoint = new TrackPoint("BoxySystems");
-    String contentTitle = trackPoint.getContentTitle();
+    FocusPoint focusPoint = new FocusPoint("BoxySystems");
+    String contentTitle = focusPoint.getContentTitle();
     assertNotNull(contentTitle);
     assertEquals("BoxySystems",contentTitle);
   }
 
   public void testGetContentTitle_OneLevel() throws Exception{
-    TrackPoint parentTrackPoint = new TrackPoint("BoxySystems");
-    TrackPoint childTrackPoint = new TrackPoint("LibraryFinder", parentTrackPoint);
-    String contentTitle = childTrackPoint.getContentTitle();
+    FocusPoint parentFocusPoint = new FocusPoint("BoxySystems");
+    FocusPoint childFocusPoint = new FocusPoint("LibraryFinder", parentFocusPoint);
+    String contentTitle = childFocusPoint.getContentTitle();
     assertNotNull(contentTitle);
     assertEquals("BoxySystems-LibraryFinder",contentTitle);
   }
 
   public void testGetContentTitle_TwoLevel() throws Exception{
-    TrackPoint parentTrackPoint = new TrackPoint("BoxySystems");
-    TrackPoint child1TrackPoint = new TrackPoint("LibraryFinder", parentTrackPoint);
-    TrackPoint child2TrackPoint = new TrackPoint("FindLibraryDialog", child1TrackPoint);
-    String contentTitle = child2TrackPoint.getContentTitle();
+    FocusPoint parentFocusPoint = new FocusPoint("BoxySystems");
+    FocusPoint child1FocusPoint = new FocusPoint("LibraryFinder", parentFocusPoint);
+    FocusPoint child2FocusPoint = new FocusPoint("FindLibraryDialog", child1FocusPoint);
+    String contentTitle = child2FocusPoint.getContentTitle();
     assertNotNull(contentTitle);
     assertEquals("BoxySystems-LibraryFinder-FindLibraryDialog",contentTitle);
   }
 
   public void testGetContentTitle_ThreeLevel() throws Exception{
-    TrackPoint parentTrackPoint = new TrackPoint("BoxySystems");
-    TrackPoint child1TrackPoint = new TrackPoint("LibraryFinder", parentTrackPoint);
-    TrackPoint child2TrackPoint = new TrackPoint("FindLibraryDialog", child1TrackPoint);
-    TrackPoint child3TrackPoint = new TrackPoint("RegexPattern", child2TrackPoint);
-    String contentTitle = child3TrackPoint.getContentTitle();
+    FocusPoint parentFocusPoint = new FocusPoint("BoxySystems");
+    FocusPoint child1FocusPoint = new FocusPoint("LibraryFinder", parentFocusPoint);
+    FocusPoint child2FocusPoint = new FocusPoint("FindLibraryDialog", child1FocusPoint);
+    FocusPoint child3FocusPoint = new FocusPoint("RegexPattern", child2FocusPoint);
+    String contentTitle = child3FocusPoint.getContentTitle();
     assertNotNull(contentTitle);
     assertEquals("BoxySystems-LibraryFinder-FindLibraryDialog-RegexPattern",contentTitle);
   }

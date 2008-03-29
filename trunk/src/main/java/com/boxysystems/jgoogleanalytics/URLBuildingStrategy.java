@@ -8,5 +8,5 @@ package com.boxysystems.jgoogleanalytics;
  */
 
 public interface URLBuildingStrategy {
-  public String buildURL(TrackPoint trackPoint);
+  public String buildURL(FocusPoint focusPoint);
 }

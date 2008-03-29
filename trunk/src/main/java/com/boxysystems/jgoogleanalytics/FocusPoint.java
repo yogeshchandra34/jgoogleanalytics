@@ -1,27 +1,27 @@
 package com.boxysystems.jgoogleanalytics;
 
 /**
- * Tracking point of the application. It can represent data points like application load, application module, user actions etc.
+ * Focus point of the application. It can represent data points like application load, application module load, user actions, error events etc.
  *
  * @author : Siddique Hameed
  * @version : 0.1
  */
 
-public class TrackPoint {
+public class FocusPoint {
 
   private String name;
-  private TrackPoint parentTrackPoint;
+  private FocusPoint parentFocusPoint;
   private static final String URI_SEPARATOR = "/";
   private static final String TITLE_SEPARATOR = "-";
 
-  public TrackPoint(String name) {
+  public FocusPoint(String name) {
     this.name = name;
   }
 
-  public TrackPoint(String name, TrackPoint parentTrackPoint) {
+  public FocusPoint(String name, FocusPoint parentFocusPoint) {
     this(name);
-    this.parentTrackPoint = parentTrackPoint;
-    this.parentTrackPoint = parentTrackPoint;
+    this.parentFocusPoint = parentFocusPoint;
+    this.parentFocusPoint = parentFocusPoint;
   }
 
   public String getName() {
@@ -29,12 +29,12 @@ public class TrackPoint {
   }
 
 
-  public void setParentTrackPoint(TrackPoint parentTrackPoint) {
-    this.parentTrackPoint = parentTrackPoint;
+  public void setParentTrackPoint(FocusPoint parentFocusPoint) {
+    this.parentFocusPoint = parentFocusPoint;
   }
 
-  public TrackPoint getParentFocusPoint() {
-    return parentTrackPoint;
+  public FocusPoint getParentFocusPoint() {
+    return parentFocusPoint;
   }
 
   public String getContentURI() {
@@ -49,23 +49,23 @@ public class TrackPoint {
     return titleBuffer.toString();
   }
 
-  private void getContentURI(StringBuffer contentURIBuffer, TrackPoint trackPoint) {
-    TrackPoint parentFocuPoint = trackPoint.getParentFocusPoint();
+  private void getContentURI(StringBuffer contentURIBuffer, FocusPoint focusPoint) {
+    FocusPoint parentFocuPoint = focusPoint.getParentFocusPoint();
 
     if (parentFocuPoint != null) {
       getContentURI(contentURIBuffer, parentFocuPoint);
     }
     contentURIBuffer.append(URI_SEPARATOR);
-    contentURIBuffer.append(trackPoint.getName());
+    contentURIBuffer.append(focusPoint.getName());
   }
 
-  private void getContentTitle(StringBuffer titleBuffer, TrackPoint trackPoint) {
-    TrackPoint parentFocuPoint = trackPoint.getParentFocusPoint();
+  private void getContentTitle(StringBuffer titleBuffer, FocusPoint focusPoint) {
+    FocusPoint parentFocuPoint = focusPoint.getParentFocusPoint();
 
     if (parentFocuPoint != null) {
       getContentTitle(titleBuffer, parentFocuPoint);
       titleBuffer.append(TITLE_SEPARATOR);
     }
-    titleBuffer.append(trackPoint.getName());
+    titleBuffer.append(focusPoint.getName());
   }
 }
