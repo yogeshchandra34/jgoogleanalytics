@@ -1,5 +1,8 @@
 package com.boxysystems.jgoogleanalytics;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
 /**
  * Focus point of the application. It can represent data points like application load, application module load, user actions, error events etc.
  *
@@ -56,7 +59,15 @@ public class FocusPoint {
       getContentURI(contentURIBuffer, parentFocuPoint);
     }
     contentURIBuffer.append(URI_SEPARATOR);
-    contentURIBuffer.append(focusPoint.getName());
+    contentURIBuffer.append(encode(focusPoint.getName()));
+  }
+
+  private String encode(String name) {
+    try {
+      return URLEncoder.encode(name, "UTF-8");
+    } catch (UnsupportedEncodingException e) {
+      return name;
+    }
   }
 
   private void getContentTitle(StringBuffer titleBuffer, FocusPoint focusPoint) {
@@ -66,6 +77,6 @@ public class FocusPoint {
       getContentTitle(titleBuffer, parentFocuPoint);
       titleBuffer.append(TITLE_SEPARATOR);
     }
-    titleBuffer.append(focusPoint.getName());
+    titleBuffer.append(encode(focusPoint.getName()));
   }
 }
