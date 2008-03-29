@@ -16,25 +16,25 @@ public class JGoogleAnalyticsTracker_UT extends TestCase {
 
 
   public void testTrackSynchronously_LibraryFinder() throws Exception {
-    JGoogleAnalyticsTracker tracker = new JGoogleAnalyticsTracker("LibraryFinder", "v1.3.1", "UA-2184000-1");
+    JGoogleAnalyticsTracker tracker = new JGoogleAnalyticsTracker("Library Finder", "v1.3.1", "UA-2184000-1");
     tracker.setLoggingAdapter(new SystemOutLogger());
     tracker.trackSynchronously(syncChildFocuPoint);
   }
 
   public void testTrackAsynchronously_LibraryFinder() throws Exception {
-    JGoogleAnalyticsTracker tracker = new JGoogleAnalyticsTracker("LibraryFinder", "v1.3.1", "UA-2184000-1");
+    JGoogleAnalyticsTracker tracker = new JGoogleAnalyticsTracker("Library Finder", "v1.3.1", "UA-2184000-1");
     tracker.setLoggingAdapter(new SystemOutLogger());
     tracker.trackAsynchronously(asyncChildFocuPoint);
     Thread.sleep(3000);
   }
 
   public void testTrackSynchronously_LibraryFinder_WithoutLogger() throws Exception {
-    JGoogleAnalyticsTracker tracker = new JGoogleAnalyticsTracker("LibraryFinder", "v1.3.1", "UA-2184000-1");
+    JGoogleAnalyticsTracker tracker = new JGoogleAnalyticsTracker("Library Finder", "v1.3.1", "UA-2184000-1");
     tracker.trackSynchronously(syncChildFocuPoint);
   }
 
   public void testTrackAsynchronously_LibraryFinder_WithoutLogger() throws Exception {
-    JGoogleAnalyticsTracker tracker = new JGoogleAnalyticsTracker("LibraryFinder", "v1.3.1", "UA-2184000-1");
+    JGoogleAnalyticsTracker tracker = new JGoogleAnalyticsTracker("Library Finder", "v1.3.1", "UA-2184000-1");
     tracker.trackAsynchronously(asyncChildFocuPoint);
     Thread.sleep(3000);
   }
