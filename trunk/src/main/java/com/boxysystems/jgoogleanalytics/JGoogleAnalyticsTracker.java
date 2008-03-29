@@ -12,7 +12,6 @@ public class JGoogleAnalyticsTracker {
 
   private URLBuildingStrategy urlBuildingStrategy = null;
   private HTTPGetMethod httpRequest = new HTTPGetMethod();
-  private LoggingAdapter loggingAdapter = null;
 
   /**
    * Simple constructor passing the application name & google analytics tracking code
@@ -53,7 +52,7 @@ public class JGoogleAnalyticsTracker {
    */
 
   public void setLoggingAdapter(LoggingAdapter loggingAdapter) {
-    this.loggingAdapter = loggingAdapter;
+    httpRequest.setLoggingAdapter(loggingAdapter);
   }
 
   /**
