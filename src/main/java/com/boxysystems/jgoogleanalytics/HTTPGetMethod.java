@@ -14,16 +14,16 @@ import java.net.URL;
 public class HTTPGetMethod {
   private static final String GET_METHOD_NAME = "GET";
   private static final String SUCCESS_MESSAGE = "Track Successfull!";
+  private LoggingAdapter loggingAdapter = null;
 
-  private boolean verboseMode;
 
-  public void setVerboseMode(boolean verboseMode) {
-    this.verboseMode = verboseMode;
+  public void setLoggingAdapter(LoggingAdapter loggingAdapter) {
+    this.loggingAdapter = loggingAdapter;
   }
 
   public void request(String urlString) {
     try {
-      log("urlString = " + urlString);
+      logMessage("urlString = " + urlString);
       URL url = new URL(urlString);
       HttpURLConnection urlConnection = openURLConnection(url);
       urlConnection.setInstanceFollowRedirects(true);
@@ -31,12 +31,12 @@ public class HTTPGetMethod {
       urlConnection.connect();
       int responseCode = getResponseCode(urlConnection);
       if (responseCode != HttpURLConnection.HTTP_OK) {
-        log("Error tracking , url = " + urlString);
+        logError("Error tracking , url = " + urlString);
       } else {
-        log(SUCCESS_MESSAGE);
+        logMessage(SUCCESS_MESSAGE);
       }
     } catch (Exception e) {
-      log(e.getMessage());
+      logError(e.getMessage());
     }
   }
 
@@ -48,11 +48,15 @@ public class HTTPGetMethod {
     return (HttpURLConnection) url.openConnection();
   }
 
-  private void log(String message) {
-    if (verboseMode) {
-      System.out.println(message);
+  private void logMessage(String message) {
+    if (loggingAdapter != null) {
+      loggingAdapter.logMessage(message);
     }
   }
 
-
+  private void logError(String errorMesssage) {
+    if (loggingAdapter != null) {
+      loggingAdapter.logError(errorMesssage);
+    }
+  }
 }
