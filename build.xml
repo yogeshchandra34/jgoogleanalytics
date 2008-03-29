@@ -55,7 +55,7 @@
 
   <target name="compile" description="compile production classes">
     <mkdir dir="${production.output.dir}"/>
-    <javac destdir="${production.output.dir}" debug="on" nowarn="off" fork="true">
+    <javac destdir="${production.output.dir}" source="1.4" target="1.4" debug="on" nowarn="off" fork="true">
       <src refid="module.sourcepath"/>
       <patternset refid="excluded.from.compilation"/>
     </javac>
@@ -100,11 +100,11 @@
     <echo>Creating ${output.file} ...</echo>
     <jar basedir="${production.output.dir}" file="${output.file}">
       <include name="**/**"/>
-		<manifest>
-		  <attribute name="Built-By" value="${user.name}"/>
-		  <attribute name="Implementation-Vendor" value="BoxySystems Inc."/>
-		  <attribute name="Implementation-URL" value="http://www.BoxySystems.com"/>
-		</manifest>
+      <manifest>
+        <attribute name="Built-By" value="${user.name}"/>
+        <attribute name="Implementation-Vendor" value="BoxySystems Inc."/>
+        <attribute name="Implementation-URL" value="http://www.BoxySystems.com"/>
+      </manifest>
     </jar>
   </target>
 
@@ -120,41 +120,6 @@
       <include name="license.txt"/>
     </zip>
   </target>
-
-  <target name="test.commandline.libraryfinder">
-    <echo>Testing Library Finder for \"org.apache.*\" from command line...</echo>
-    <java jar="${libraryfinder.jar}" fork="true" outputproperty="org.apache.search.results">
-      <arg value="."/>
-      <arg value="org.apache.*"/>
-    </java>
-    <echo>Result = ${org.apache.search.results}</echo>
-
-    <echo>Testing Library Finder for \"abbot.componentfinder\" from command line...</echo>
-    <java jar="${libraryfinder.jar}" fork="true" outputproperty="abbot.componentfinder.search.results">
-      <arg value="."/>
-      <arg value="abbot.componentfinder"/>
-    </java>
-    <echo>Result = ${abbot.componentfinder.search.results}</echo>
-    <condition property="libraries.present">
-      <and>
-        <contains string="${org.apache.search.results}" substring="log4j.jar"/>
-        <contains string="${abbot.componentfinder.search.results}" substring="abbot.jar"/>
-      </and>
-    </condition>
-    <antcall target="assert.commandline.libraryfinder"/>
-  </target>
-
-  <target name="success.commandline.libraryfinder" if="libraries.present">
-    <echo>Library Finder works great from command line!</echo>
-  </target>
-
-  <target name="fail.commandline.libraryfinder" unless="libraries.present">
-    <fail message="Library Finder did not work from command line.
-        Please make sure that the manifest file exists in ${libraryfinder.jar} file"/>
-  </target>
-
-  <target name="assert.commandline.libraryfinder"
-          depends="success.commandline.libraryfinder,fail.commandline.libraryfinder"/>
 
   <target name="all" depends="clean, compile" description="build all"/>
 </project>
