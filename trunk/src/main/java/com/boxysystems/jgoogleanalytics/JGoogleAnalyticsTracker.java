@@ -12,6 +12,7 @@ public class JGoogleAnalyticsTracker {
 
   private URLBuildingStrategy urlBuildingStrategy = null;
   private HTTPGetMethod httpRequest = new HTTPGetMethod();
+  private LoggingAdapter loggingAdapter;
 
   /**
    * Simple constructor passing the application name & google analytics tracking code
@@ -52,6 +53,7 @@ public class JGoogleAnalyticsTracker {
    */
 
   public void setLoggingAdapter(LoggingAdapter loggingAdapter) {
+    this.loggingAdapter = loggingAdapter;
     httpRequest.setLoggingAdapter(loggingAdapter);
   }
 
@@ -65,6 +67,7 @@ public class JGoogleAnalyticsTracker {
 
 
   public void trackSynchronously(FocusPoint focusPoint) {
+    logMessage("JGoogleAnaytics: Tracking synchronously focusPoint=" + focusPoint.getContentTitle());
     httpRequest.request(urlBuildingStrategy.buildURL(focusPoint));
   }
 
@@ -75,7 +78,14 @@ public class JGoogleAnalyticsTracker {
    */
 
   public void trackAsynchronously(FocusPoint focusPoint) {
+    logMessage("JGoogleAnaytics: Tracking Asynchronously focusPoint=" + focusPoint.getContentTitle());
     new TrackingThread(focusPoint).start();
+  }
+
+  private void logMessage(String message) {
+    if (loggingAdapter != null) {
+      loggingAdapter.logMessage(message);
+    }
   }
 
   private class TrackingThread extends Thread {
