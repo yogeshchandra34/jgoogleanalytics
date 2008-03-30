@@ -13,7 +13,7 @@ import java.net.URL;
 
 public class HTTPGetMethod {
   private static final String GET_METHOD_NAME = "GET";
-  private static final String SUCCESS_MESSAGE = "Track Successfull!";
+  private static final String SUCCESS_MESSAGE = "JGoogleAnalytics: Tracking Successfull!";
   private LoggingAdapter loggingAdapter = null;
 
 
@@ -23,7 +23,6 @@ public class HTTPGetMethod {
 
   public void request(String urlString) {
     try {
-      logMessage("urlString = " + urlString);
       URL url = new URL(urlString);
       HttpURLConnection urlConnection = openURLConnection(url);
       urlConnection.setInstanceFollowRedirects(true);
@@ -31,7 +30,7 @@ public class HTTPGetMethod {
       urlConnection.connect();
       int responseCode = getResponseCode(urlConnection);
       if (responseCode != HttpURLConnection.HTTP_OK) {
-        logError("Error tracking , url = " + urlString);
+        logError("JGoogleAnalytics: Error tracking, url=" + urlString);
       } else {
         logMessage(SUCCESS_MESSAGE);
       }
