@@ -73,7 +73,7 @@
     </copy>
   </target>
 
-  <target name="compile.tests" depends="compile" description="compile LibraryFinder test classes"
+  <target name="compile.tests" depends="compile" description="compile test classes"
           unless="skip.tests">
     <mkdir dir="${test.output.dir}"/>
     <javac destdir="${test.output.dir}" debug="on" nowarn="off" fork="true">
