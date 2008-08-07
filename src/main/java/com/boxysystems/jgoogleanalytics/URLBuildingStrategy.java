@@ -9,4 +9,5 @@ package com.boxysystems.jgoogleanalytics;
 
 public interface URLBuildingStrategy {
   public String buildURL(FocusPoint focusPoint);
+  public void setRefererURL(String refererURL);
 }

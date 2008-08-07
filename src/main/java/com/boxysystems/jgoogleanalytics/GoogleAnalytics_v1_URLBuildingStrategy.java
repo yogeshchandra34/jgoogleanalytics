@@ -14,6 +14,7 @@ import java.util.*;
 public class GoogleAnalytics_v1_URLBuildingStrategy implements URLBuildingStrategy {
   private FocusPoint appFocusPoint;
   private String googleAnalyticsTrackingCode;
+  private String refererURL = "http://www.BoxySystems.com";
 
   private static final String TRACKING_URL_Prefix = "http://www.google-analytics.com/__utm.gif";
 
@@ -41,6 +42,16 @@ public class GoogleAnalytics_v1_URLBuildingStrategy implements URLBuildingStrate
 
 
   public String buildURL(FocusPoint focusPoint) {
+
+     int cookie = random.nextInt();
+     int randomValue = random.nextInt(2147483647) -1;
+     long now = new Date().getTime();
+
+//    String $urchinUrl="http://www.google-analytics.com/__utm.gif?utmwv=1&utmn='.$var_utmn.'&utmsr=-&utmsc=-&utmul=-&utmje=0&utmfl=-&utmdt=-&utmhn='.$var_utmhn.'&utmr='.$var_referer.'&utmp='.$var_utmp." +
+//      "'&utmac='.$var_utmac.'" +
+//      "&utmcc=__utma%3D'.$var_cookie.'.'.$var_random.'.'.$var_today.'.'.$var_today.'.'.$var_today.'.2%3B%2B__utmb%3D'.$var_cookie.'%3B%2B__utmc%3D'.$var_cookie.'%3B%2B__utmz%3D'.$var_cookie.'.'.$var_today.'.2.2.utmccn%3D(direct)%7Cutmcsr%3D(direct)%7Cutmcmd%3D(none)%3B%2B__utmv%3D'.$var_cookie.'.'.$var_uservar.'%3B";
+
+
     focusPoint.setParentTrackPoint(appFocusPoint);
     StringBuffer url = new StringBuffer(TRACKING_URL_Prefix);
     url.append("?utmwv=1"); //Urchin/Analytics version
@@ -54,10 +65,14 @@ public class GoogleAnalytics_v1_URLBuildingStrategy implements URLBuildingStrate
     url.append("&utmcr=1"); //carriage return
     url.append("&utmdt=" + focusPoint.getContentTitle()); //The optimum keyword density //document title
     url.append("&utmhn=" + hostName);//document hostname
-    url.append("&utmr=http://BoxySystems.com"); //referer URL
+    url.append("&utmr="+refererURL); //referer URL
     url.append("&utmp=" + focusPoint.getContentURI());//document page URL
     url.append("&utmac=" + googleAnalyticsTrackingCode);//Google Analytics account
-    url.append("&utmcc=__utma%3D247248150.1814692369.1202829249.1206454660.1206537858.33%3B%2B__utmz%3D247248150.1206395957.31.20.utmcsr%3Dhttp://BoxySystems.com%7Cutmccn%3D(referral)%7Cutmcmd%3Dreferral%7Cutmcct%3D%252Fig%252Fifr%3B");
+    url.append("&utmcc=__utma%3D'"+cookie+"."+randomValue+"."+now+"."+now+"."+now+".2%3B%2B__utmb%3D"+cookie+"%3B%2B__utmc%3D"+cookie+"%3B%2B__utmz%3D"+cookie+"."+now+".2.2.utmccn%3D(direct)%7Cutmcsr%3D(direct)%7Cutmcmd%3D(none)%3B%2B__utmv%3D"+cookie);
     return url.toString();
+  }
+
+  public void setRefererURL(String refererURL) {
+    this.refererURL = refererURL;
   }
 }

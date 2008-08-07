@@ -16,13 +16,13 @@ public class JGoogleAnalyticsTracker_UT extends TestCase {
 
 
   public void testTrackSynchronously_LibraryFinder() throws Exception {
-    JGoogleAnalyticsTracker tracker = new JGoogleAnalyticsTracker("JGoogleAnalytics", "v0.1", "UA-4017644");
+    JGoogleAnalyticsTracker tracker = new JGoogleAnalyticsTracker("JGoogleAnalytics", "v0.1", "UA-4017644-1");
     tracker.setLoggingAdapter(new SystemOutLogger());
     tracker.trackSynchronously(syncChildFocuPoint);
   }
 
   public void testTrackAsynchronously_LibraryFinder() throws Exception {
-    JGoogleAnalyticsTracker tracker = new JGoogleAnalyticsTracker("JGoogleAnalytics", "v0.1", "UA-4017644");
+    JGoogleAnalyticsTracker tracker = new JGoogleAnalyticsTracker("JGoogleAnalytics", "v0.1", "UA-4017644-1");
     tracker.setLoggingAdapter(new SystemOutLogger());
     tracker.trackAsynchronously(asyncChildFocuPoint);
     Thread.sleep(3000);
