@@ -6,8 +6,10 @@
     <version>3</version>
    </parent>
 
+  <modelVersion>4.0.0</modelVersion>
   <artifactId>jgoogleanalytics</artifactId>
   <packaging>jar</packaging>
+  <version>0.3-SNAPSHOT</version>
   <name>JGoogleAnalytics: Google Analytics for Java apps</name>
   <description>JGoogleAnalytics: Google Analytics for Java apps</description>
   <inceptionYear>2008</inceptionYear>
@@ -38,4 +40,21 @@
 	</dependency>
   </dependencies>
 
+   <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-gpg-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>sign-artifacts</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>sign</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 </project>
