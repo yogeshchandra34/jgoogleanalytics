@@ -24,7 +24,6 @@ public class FocusPoint {
   public FocusPoint(String name, FocusPoint parentFocusPoint) {
     this(name);
     this.parentFocusPoint = parentFocusPoint;
-    this.parentFocusPoint = parentFocusPoint;
   }
 
   public String getName() {
