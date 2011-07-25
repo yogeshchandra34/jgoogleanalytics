@@ -3,7 +3,7 @@
 
   <dirname property="module.basedir" file="${ant.file}"/>
 
-  <property name="version" value="0.3"/>
+  <property name="version" value="0.4"/>
 
   <property name="production.output.dir" value="${module.basedir}/target/classes"/>
   <property name="test.output.dir" value="${module.basedir}/target/test-classes"/>
