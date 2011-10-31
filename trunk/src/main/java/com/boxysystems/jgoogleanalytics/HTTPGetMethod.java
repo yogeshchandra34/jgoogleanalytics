@@ -14,7 +14,7 @@ import java.net.URL;
 public class HTTPGetMethod {
   private static final String GET_METHOD_NAME = "GET";
 
-  private static final String SUCCESS_MESSAGE = "JGoogleAnalytics: Tracking Successfull!";
+  private static final String SUCCESS_MESSAGE = "JGoogleAnalytics: Tracking Successful!";
 
   private LoggingAdapter loggingAdapter = null;
 
@@ -22,10 +22,9 @@ public class HTTPGetMethod {
     this.loggingAdapter = loggingAdapter;
   }
 
-  private static String uaName = null; // "BoxySystemsJGoogleAnalytics/0.2";
+  private static String uaName = null; // User Agent name
 
-  // private static String uaString = null; // "Java";
-  private static String osString = "Unnkown";
+  private static String osString = "Unknown";
 
   HTTPGetMethod() {
     // Initialise the static parameters if we need to.

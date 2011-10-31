@@ -1,60 +1,39 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-   <parent>
-    <groupId>org.sonatype.oss</groupId>
-    <artifactId>oss-parent</artifactId>
-    <version>3</version>
-   </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.boxysystems</groupId>
+    <artifactId>jgoogleanalytics</artifactId>
+    <packaging>jar</packaging>
+    <version>0.3-SNAPSHOT</version>
+    <name>JGoogleAnalytics: Google Analytics for Java</name>
+    <description>JGoogleAnalytics: Google Analytics tracking for Java applications</description>
+    <inceptionYear>2008</inceptionYear>
+    <url>http://jgoogleanalytics.googlecode.com</url>
 
-  <modelVersion>4.0.0</modelVersion>
-  <artifactId>jgoogleanalytics</artifactId>
-  <packaging>jar</packaging>
-  <version>0.3-SNAPSHOT</version>
-  <name>JGoogleAnalytics: Google Analytics for Java apps</name>
-  <description>JGoogleAnalytics: Google Analytics for Java apps</description>
-  <inceptionYear>2008</inceptionYear>
-  <url>http://jgoogleanalytics.googlecode.com</url>
+    <!--
+    source control management
+    -->
+    <scm>
+        <connection>scm:svn:http://jgoogleanalytics.googlecode.com/svn/trunk/</connection>
+        <developerConnection>scm:svn:https://jgoogleanalytics.googlecode.com/svn/trunk/</developerConnection>
+        <url>http://jgoogleanalytics.googlecode.com/svn/trunk/</url>
+    </scm>
 
-  <!--
-  source control management
-  -->
-  <scm>
-    <connection>scm:svn:http://jgoogleanalytics.googlecode.com/svn/trunk/</connection>
-    <developerConnection>scm:svn:https://jgoogleanalytics.googlecode.com/svn/trunk/</developerConnection>
-    <url>http://jgoogleanalytics.googlecode.com/svn/trunk/</url>
-  </scm>
+    <!--
+    distribution related properties
+    -->
 
-  <!--
-  distribution related properties
-  -->
+    <!--
+    dependencies
+    -->
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.8.2</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
-  <!--
-  dependencies
-  -->
-  <dependencies>
-	<dependency>
-		<groupId>junit</groupId>
-		<artifactId>junit</artifactId>
-		<version>4.4</version>
-		<scope>test</scope>
-	</dependency>
-  </dependencies>
-
-   <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-gpg-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>sign-artifacts</id>
-            <phase>verify</phase>
-            <goals>
-              <goal>sign</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-    </plugins>
-  </build>
 </project>
