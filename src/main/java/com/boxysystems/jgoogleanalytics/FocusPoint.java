@@ -70,10 +70,10 @@ public class FocusPoint {
   }
 
   private void getContentTitle(StringBuffer titleBuffer, FocusPoint focusPoint) {
-    FocusPoint parentFocuPoint = focusPoint.getParentFocusPoint();
+    FocusPoint parentFocusPoint = focusPoint.getParentFocusPoint();
 
-    if (parentFocuPoint != null) {
-      getContentTitle(titleBuffer, parentFocuPoint);
+    if (parentFocusPoint != null) {
+      getContentTitle(titleBuffer, parentFocusPoint);
       titleBuffer.append(TITLE_SEPARATOR);
     }
     titleBuffer.append(encode(focusPoint.getName()));
