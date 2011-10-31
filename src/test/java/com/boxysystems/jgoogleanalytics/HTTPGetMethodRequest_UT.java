@@ -1,6 +1,7 @@
 package com.boxysystems.jgoogleanalytics;
 
 import junit.framework.TestCase;
+import org.junit.Ignore;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -12,13 +13,6 @@ import java.net.HttpURLConnection;
  * Time: 3:37:15 PM
  */
 public class HTTPGetMethodRequest_UT extends TestCase {
-
-  public void testRequest_Success() throws Exception {
-    MockHTTPGetMethod httpGetMethod = new MockHTTPGetMethod();
-    httpGetMethod.setLoggingAdapter(new SystemOutLogger());
-    httpGetMethod.request("http://www.BoxySystems.com");
-    assertEquals(HttpURLConnection.HTTP_OK, httpGetMethod.responseCode);
-  }
 
   public void testRequest_Failure() throws Exception {
     MockHTTPGetMethod httpGetMethod = new MockHTTPGetMethod();
