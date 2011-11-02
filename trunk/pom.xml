@@ -11,6 +11,29 @@
     <inceptionYear>2008</inceptionYear>
     <url>http://jgoogleanalytics.googlecode.com</url>
 
+     <licenses>
+        <license>
+            <name>Apache 2</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+            <comments>A business-friendly OSS license</comments>
+        </license>
+    </licenses>
+    <developers>
+        <developer>
+            <id>siddii</id>
+            <name>Siddique Hameed</name>
+            <email>siddii at gmail.com</email>
+            <url>http://www.BoxySystems.com</url>
+            <organization>BoxySystems Inc.</organization>
+            <organizationUrl>http://www.BoxySystems.com</organizationUrl>
+            <roles>
+                <role>developer</role>
+            </roles>
+            <timezone>-6</timezone>
+        </developer>
+    </developers>
+
     <!--
     source control management
     -->
